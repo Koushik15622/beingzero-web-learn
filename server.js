@@ -8,10 +8,11 @@ app.get("/", function(req, res){
 app.get("/home", function(req, res){
     res.send("Welcome home!!");
 })
-// Heroku will automatically set an environment variable called PORT
-const PORT = process.env.PORT || 3000;
+app.get("/res", function(req, res){
+    res.sendFile("C:\Users\psrao\Downloads\Resume-Koushik-PLN.pdf");
+})
 
-// Start the server
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, function(){
     console.log("Server Starting running on http://localhost:"+PORT);
 })
