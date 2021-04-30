@@ -1,5 +1,31 @@
 h1{
-    color: red;
-    font-size: large;
-    font-style: oblique;
+    color :whitesmoke;
+    font-size: xx-large;
+    font-style: normal;
+    background:#6B5B95;
+    padding: 20px;
+    font-family: "Trirong",serif;
+    align-content: center;
+}
+body{
+    border: sandybrown;
+    background :whitesmoke;
+}
+img{
+    border-radius: 50%;
+    margin: 25px 25px 25px 25px;
+    text-align: right;
+    text-shadow: 2px 2px;
+    box-shadow: 0 0 2px 2px black;
+}
+img:hover{
+    box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
+h2{
+    color:blueviolet;
+    font-size: medium;
+}
+ul{
+    align-content: flex-start;
+    color:tomato;
 }

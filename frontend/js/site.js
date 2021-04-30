@@ -1,2 +1,2 @@
 console.log("js loaded")
-alert("js loaded")
+alert("This is my Resume")
