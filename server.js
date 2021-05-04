@@ -11,10 +11,10 @@ app.get("/home", function(req, res){
 app.get("/res", function(req, res){
     res.sendFile(__dirname+"/Resume-Koushik-PLN.pdf");
 })
-app.get("/site", function(req, res){
+app.get("/resume", function(req, res){
     res.sendFile(__dirname+"/frontend/html/site.html");
 })
-app.get("/search", function(req, res){
+app.get("/google", function(req, res){
     res.sendFile(__dirname+"/frontend/html/search.html");
 })
 const PORT = process.env.PORT || 3000;
