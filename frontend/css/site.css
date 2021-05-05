@@ -29,3 +29,11 @@ ul{
     align-content: flex-start;
     color:tomato;
 }
+header{
+    background:#6B5B95;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+}
