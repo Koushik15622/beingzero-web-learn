@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/color.css">
+    <title>colour picker</title>
+</head>
+<body>
+    <header><h1 id="box">rgb(255,255,255)</h1></header><br>
+    <br>
+    <br>
+    <div class="slide">
+    <label for="red" >Red: </label><input onchange="changergb()" type="range" name="red" id="red" min="0" max="255" value="255"> 
+    <label for="green">Green: </label><input onchange="changergb()" type="range" name="green" id="green" min="0" max="255" value="255"> 
+    <label for="blue">Blue: </label><input onchange="changergb()" type="range" name="blue" id="blue" min="0" max="255" value="255"> 
+    </div>
+    <script>
+        function changergb(){
+            var r=document.getElementById("red").value;
+            var b=document.getElementById("blue").value;
+            var g=document.getElementById("green").value;
+            document.getElementById("box").innerHTML="rgb("+r+","+g+","+b+")";  
+            document.getElementById("box").style.backgroundColor="rgb("+r+","+g+","+b+")";
+        }
+    </script>
+</body>
+</html>

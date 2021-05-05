@@ -17,6 +17,9 @@ app.get("/resume", function(req, res){
 app.get("/google", function(req, res){
     res.sendFile(__dirname+"/frontend/html/search.html");
 })
+app.get("/color", function(req, res){
+    res.sendFile(__dirname+"/frontend/html/color.html");
+})
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, function(){
     console.log("Server Starting running on http://localhost:"+PORT);
