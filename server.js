@@ -20,6 +20,12 @@ app.get("/google", function(req, res){
 app.get("/color", function(req, res){
     res.sendFile(__dirname+"/frontend/html/color.html");
 })
+app.get("/login", function(req, res){
+    res.sendFile(__dirname+"/frontend/html/login.html");
+})
+app.get("/register", function(req, res){
+    res.sendFile(__dirname+"/frontend/html/register.html");
+})
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, function(){
     console.log("Server Starting running on http://localhost:"+PORT);
