@@ -10,7 +10,7 @@ showComplete();
 
 
 function createNewTaskElement(str,i) {
-
+	console.log("1");
 	var listItem = document.createElement("li");
 	var label = document.createElement("label");
 	var checkBox = document.createElement("input");
@@ -38,6 +38,7 @@ function createNewTaskElement(str,i) {
 };
 
 function completedTaskElement(str, i){
+	console.log("2");
 	var listItem = document.createElement("li");
 	var span = document.createElement("span");
 	var icon = document.createElement("i");
@@ -60,6 +61,7 @@ function completedTaskElement(str, i){
 };
 
 function completed(element){
+	console.log("3");
 	var id = element.getAttribute('id');
 	var complete = getCompletedData();
 	str = document.getElementById("text-" + Number(id)).innerText;
@@ -76,6 +78,7 @@ function completed(element){
 };
 
 function getData(){
+	console.log("4");
 	var data = new Array;
 	var data_str = localStorage.getItem('todo');
 	if (data_str != null){
@@ -85,6 +88,7 @@ function getData(){
 };
 
 function getCompletedData(){
+	console.log("5");
 	var data = new Array;
 	var data_str = localStorage.getItem('complete');
 	if (data_str != null){
@@ -95,6 +99,7 @@ function getCompletedData(){
 
 
 function addTask() {
+	console.log("6");
 	var data = getData();
 	var task = newTask.value;
 	if(task != "") {
@@ -108,10 +113,12 @@ function addTask() {
 };
 
 function add(str,i){
+	console.log("7");
 	incompleteTasks.appendChild(createNewTaskElement(str,i));
 	removeButton[i].addEventListener('click', deleteIncomplete);
 };
 function showIncomplete(){
+	console.log("8");
 	var data = getData();
 	for(var i=0; i<data.length;i++){
 		incompleteTasks.appendChild(createNewTaskElement(data[i],i));
@@ -120,6 +127,7 @@ function showIncomplete(){
 };
 
 function showComplete(){
+	console.log("9");
 	var complete = getCompletedData();
 	for(var i=0; i<complete.length;i++){
 		completeTasks.appendChild(completedTaskElement(complete[i],i));
@@ -129,6 +137,7 @@ function showComplete(){
 };
 
 function deleteIncomplete(){
+	console.log("10");
 	var id = this.getAttribute('id');
 	var data = getData();
 	data.splice(id-1,1);
@@ -140,6 +149,7 @@ function deleteIncomplete(){
 };
 
 function deleteComplete() {
+	console.log("11");
 	var id = this.getAttribute('id');
 	var data = getCompletedData();
 	data.splice(id-1,1);
