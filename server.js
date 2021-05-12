@@ -29,6 +29,9 @@ app.get("/register", function(req, res){
 app.get("/chart", function(req, res){
     res.sendFile(__dirname+"/frontend/html/chart.html");
 })
+app.get("/todo", function(req, res){
+    res.sendFile(__dirname+"/frontend/html/todo.html");
+})
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, function(){
     console.log("Server Starting running on http://localhost:"+PORT);

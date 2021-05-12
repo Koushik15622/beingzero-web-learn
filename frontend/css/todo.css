@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Itim&display=swap');
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-color:#5286F3;
+}
+
+div{
+	display: block;
+	width: 400px;
+	margin: auto;
+}
+
+h1{
+	text-align: center;
+	color: black;
+	font-family: 'Bebas Neue' ;
+	text-transform: uppercase;
+}
+
+ul{
+	margin:0;
+	padding: 0;
+}
+
+#completed-tasks span{
+	text-decoration: line-through;
+	font-size: 1.2em !important;
+}
+.mdl-textfield__input{
+    text-indent: 10px;
+}
