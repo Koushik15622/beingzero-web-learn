@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet"> 
+    <title>Document</title>
+</head>
+<style>
+form{
+    background-color: black;
+    padding-top: 1%;
+    padding-bottom: 5%;
+    border-radius: 20px;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 8%;
+}
+.a{
+    padding-right: 2%;
+    padding-top: 1.7%;
+    padding-bottom: 1.7%;
+    float: right;
+}
+input{
+    height: 35px;
+    width: 30%;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    text-indent: 10px;
+}
+button{
+    background-color: #FF5964;
+    border-radius: 10px;
+    height: 35px;
+    width: 30%;  
+    border: none;  
+    font-family: Montserrat ;
+    color: white;
+}
+h2{
+    color: white;
+    font-family: Montserrat ;
+    font-size: 40px;
+}
+.rr{
+    padding-left: 3%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    float: left;
+}
+a:link, a:visited {
+  background-color: #FF5964;
+  color: white;
+  padding: 8px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 15px;
+  font-family: Montserrat;
+  font-size: small;
+}
+
+a:hover, a:active {
+  background-color: red;
+}
+::placeholder{
+    font-family: Montserrat ;
+}
+input{
+    min-width: 300px;
+}
+</style>
+<body bgcolor="#5286F3">
+    <div class="main"></div>
+<div style="text-align: center;">
+<form action="/api/todos" method="POST">
+    <h2>Login Page</h2>
+    <input type="text" placeholder="Task" name="task"><br><br>
+    <input type="text" placeholder="Id" name="id"><br><br>
+    <br>
+    <button>Submit</button>
+    <br>
+    <br>
+</form>
+</div>
+</body>
+</html>
