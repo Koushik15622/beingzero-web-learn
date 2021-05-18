@@ -1,91 +1,180 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet"> 
-    <title>Document</title>
-</head>
-<style>
-form{
-    background-color: black;
-    padding-top: 1%;
-    padding-bottom: 5%;
-    border-radius: 20px;
-    margin-left: 20%;
-    margin-right: 20%;
-    margin-top: 8%;
-}
-.a{
-    padding-right: 2%;
-    padding-top: 1.7%;
-    padding-bottom: 1.7%;
-    float: right;
-}
-input{
-    height: 35px;
-    width: 30%;
-    border-radius: 10px;
-    outline: none;
-    border: none;
-    text-indent: 10px;
-}
-button{
-    background-color: #FF5964;
-    border-radius: 10px;
-    height: 35px;
-    width: 30%;  
-    border: none;  
-    font-family: Montserrat ;
-    color: white;
-}
-h2{
-    color: white;
-    font-family: Montserrat ;
-    font-size: 40px;
-}
-.rr{
-    padding-left: 3%;
-    padding-top: 2%;
-    padding-bottom: 2%;
-    float: left;
-}
-a:link, a:visited {
-  background-color: #FF5964;
-  color: white;
-  padding: 8px 15px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  border-radius: 15px;
-  font-family: Montserrat;
-  font-size: small;
-}
 
-a:hover, a:active {
-  background-color: red;
-}
-::placeholder{
-    font-family: Montserrat ;
-}
-input{
-    min-width: 300px;
-}
-</style>
-<body bgcolor="#5286F3">
-    <div class="main"></div>
-<div style="text-align: center;">
-<form action="/api/todos" method="POST">
-    <h2>Login Page</h2>
-    <input type="text" placeholder="Task" name="task"><br><br>
-    <input type="text" placeholder="Id" name="id"><br><br>
-    <br>
-    <button>Submit</button>
-    <br>
-    <br>
-</form>
-</div>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CRUD Operations</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Basic CRUD operations">
+    <meta name="keywords" content="CRUD operation in JS, CRUD operation in Jquery">
+    <meta name="author" content="Being Zero Pvt Ltd">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+
+    <style>
+        .hidden {
+            display: none;
+        }
+
+        .result {
+            max-width: 80px;
+        }
+    </style>
+</head>
+<body>
+    <br />
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10">
+                <button class="btn btn-sm btn-primary" id="add-test">Add Course</button>
+                <div class="clearfix"><br /></div>
+                <div class="card card-body">
+                    <!-- Form Wrapper & Button -->
+                    <form action="/api/course" method="POST">
+                    <div class="form-wrapper hidden" style="width: 61%;">
+                        <input class="form-control" placeholder=" Enter Task" type="text" id="test-name" style="margin: 10px;" name="course"><br>
+                        <input class="form-control" placeholder=" Enter no of articels" type="number" id="test-result" style="margin: 10px;" name="arts">
+                        <button class="btn btn-sm btn-info" id="create-test" style="margin: 10px;">Add</button>
+                    </div>
+                    </form>
+                    <!-- Data Table -->
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Courses</th>
+                                <th scope="col">Articels</th>
+                                <th scope="col">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tests-table"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>
+<script>
+
+    var i=1;
+    var newTest = { 'name': null, 'id':i, 'Articels': null }
+
+    $('#add-test').on('click', function () {
+        $('.form-wrapper').removeClass('hidden')
+    })
+
+    $('#test-result').on('keyup', function () {
+        newTest.Articels = $(this).val()
+        console.log(newTest)
+
+    })
+    $('#test-name').on('keyup', function () {
+        newTest.name = $(this).val()
+        console.log(newTest)
+
+    })
+    
+    $.get("/api/course", function(data, status){
+        for (var i in data) {
+        addRow(data[i])
+    }
+        
+    });
+    function addRow(obj) {
+        obj.id=i;
+        i=i+1;
+        var row = `<tr scope="row" class="test-row-${obj.id}">
+                       <td>${obj.course}</td>
+                       <td id="result-${obj.id}" data-testid="${obj.id}"">${obj.articles}</td>
+                       <td>
+                         <button class="btn btn-sm btn-danger" data-testid=${obj.id} id="delete-${obj.id}">Delete</button>
+                         <button class="btn btn-sm btn-info" disabled data-testid="${obj.id}"  id="save-${obj.id}">Save</button>
+
+                         <button class="btn btn-sm btn-danger hidden" data-testid="${obj.id}"  id="cancel-${obj.id}">Cancel</button>
+                         <button class="btn btn-sm btn-primary hidden" data-testid="${obj.id}"  id="confirm-${obj.id}">Confirm</button>
+
+                       </td>
+                   </tr>`
+        $('#tests-table').append(row)
+
+        $(`#delete-${obj.id}`).on('click', deleteTest)
+        $(`#cancel-${obj.id}`).on('click', cancelDeletion)
+        $(`#confirm-${obj.id}`).on('click', confirmDeletion)
+        $(`#save-${obj.id}`).on('click', saveUpdate)
+
+
+        $(`#result-${obj.id}`).on('click', editResult)
+
+    }
+
+    function editResult() {
+        var testid = $(this).data('testid')
+        var value = $(this).html()
+
+        $(this).unbind()
+        $(this).html(`<input class="result form-control" data-testid="${testid}" type="text" value="${value}">`)
+
+        $(`.result`).on('keyup', function () {
+            var testid = $(this).data('testid')
+            var saveBtn = $(`#save-${testid}`)
+            saveBtn.prop('disabled', false)
+
+        })
+
+    }
+
+    function saveUpdate() {
+        console.log('Saved!')
+        var testid = $(this).data('testid')
+        var saveBtn = $(`#save-${testid}`)
+        var row = $(`.test-row-${testid}`)
+
+        saveBtn.prop('disabled', true)
+        row.css('opacity', "0.5")
+
+        setTimeout(function () {
+            row.css('opacity', '1')
+        }, 2000)
+
+
+    }
+
+    function deleteTest() {
+        var testid = $(this).data('testid')
+
+        var deleteBtn = $(`#delete-${testid}`)
+        var saveBtn = $(`#save-${testid}`)
+        var cancelBtn = $(`#cancel-${testid}`)
+        var confirmBtn = $(`#confirm-${testid}`)
+
+        deleteBtn.addClass('hidden')
+        saveBtn.addClass('hidden')
+
+        cancelBtn.removeClass('hidden')
+        confirmBtn.removeClass('hidden')
+    }
+
+    function cancelDeletion() {
+        var testid = $(this).data('testid')
+
+        var deleteBtn = $(`#delete-${testid}`)
+        var saveBtn = $(`#save-${testid}`)
+        var cancelBtn = $(`#cancel-${testid}`)
+        var confirmBtn = $(`#confirm-${testid}`)
+
+        deleteBtn.removeClass('hidden')
+        saveBtn.removeClass('hidden')
+
+        cancelBtn.addClass('hidden')
+        confirmBtn.addClass('hidden')
+
+    }
+
+    function confirmDeletion() {
+        var testid = $(this).data('testid')
+        var row = $(`.test-row-${testid}`)
+        row.remove()
+
+    }
+</script>
