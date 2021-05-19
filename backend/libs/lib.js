@@ -15,15 +15,15 @@ module.exports.getall = function(req,res){
     });
 module.exports.update = function(req,res){
     //var db=model.db("myFirstDatabase");
-    console.log("in lib.update");
     var q={course:req.body.course};
     var n={$set :{course:req.body.nc,articles:req.body.na}};
-    model.collection("course").updateOne(q,n,function(err,res){
+    model.updateOne(q,n,function(err,res){
         if(err)
             console.log("error update");
         console.log("updated");
-        res.redirect("/crud");
+        //res.redirect("/crud");
     });
+    res.redirect("/crud");
 }
 
 };
