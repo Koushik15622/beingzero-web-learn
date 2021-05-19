@@ -56,6 +56,12 @@ app.get("/crudupdate", function(req, res){
 app.post('/api/update',function(req,res){
     lib.update(req,res);
 })
+app.get("/cruddelete", function(req, res){
+    res.sendFile(__dirname+"/frontend/html/delete.html");
+})
+app.post('/api/delete',function(req,res){
+    lib.delete(req,res);
+})
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, function(){
     console.log("Server Starting running on http://localhost:"+PORT);
