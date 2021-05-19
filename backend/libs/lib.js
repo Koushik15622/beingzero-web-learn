@@ -14,7 +14,6 @@ module.exports.getall = function(req,res){
         res.json(allarr);
     });
 module.exports.update = function(req,res){
-    //var db=model.db("myFirstDatabase");
     var q={course:req.body.course};
     var n={$set :{course:req.body.nc,articles:req.body.na}};
     model.updateOne(q,n,function(err,res){
