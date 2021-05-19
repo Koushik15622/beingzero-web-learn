@@ -50,6 +50,21 @@ app.get('/api/course', function(req,res){
 app.post('/api/course', function(req, res){
     lib.create(req,res);
 })
+app.get("/crudupdate", function(req, res){
+    res.sendFile(__dirname+"/frontend/html/update.html");
+})
+app.post('/api/update',function(req,res){
+     console.log("in lib.update");
+    var q={course:req.body.course};
+    var n={$set :{course:req.body.nc,articles:req.body.na}};
+    model.updateOne(q,n,function(err,res){
+        if(err)
+            console.log("error update");
+        console.log("updated");
+        //res.redirect("/crud");
+    });
+    res.redirect("/crud");
+})
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, function(){
     console.log("Server Starting running on http://localhost:"+PORT);
