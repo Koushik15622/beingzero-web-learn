@@ -24,7 +24,7 @@ module.exports.update = function(req,res){
         console.log("updated");
         //res.redirect("/crud");
     });
-    res.redirect("/crud");
+    res.redirect("/crudbas");
 }
 module.exports.delete = function(req,res){
     var q={course:req.body.course};
@@ -35,6 +35,6 @@ module.exports.delete = function(req,res){
         console.log("soft deleted");
         //res.redirect("/crud");
     });
-    res.redirect("/crud");
+    res.redirect("/crudbas");
 
 }
