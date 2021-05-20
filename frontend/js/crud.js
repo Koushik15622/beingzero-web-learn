@@ -17,7 +17,7 @@ $('#test-id').on('keyup', function () {
     console.log(newTest)
 
 })
-$('#test-name').on('change', function () {
+$('#test-name').on('keyup', function () {
     newTest.name = $(this).val()
     console.log(newTest)
 })
