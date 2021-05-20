@@ -5,7 +5,7 @@ const db= require("./backend/db/dbconn");
 const lib = require("./backend/libs/lib");
 const model = require("./backend/models/model");
 const courselib=require('./backend/libs/courselib');
-//const dbconnect = require('./backend/db/dbconnect');
+const config = require('./backend/config/config');
 app.use(express.static(__dirname+"/frontend"));
 app.use(express.json());
 app.use(bp.urlencoded({extended:true}));
@@ -73,7 +73,6 @@ app.get("/crud", courselib.getall);
 app.delete("/crud/:idd", courselib.deleteone);
 app.post("/crud",courselib.addnewone);
 app.put("/crud/:idd", courselib.update);
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, function(){
-    console.log("Server Starting running on http://localhost:"+PORT);
+app.listen(config.webPort, function(){
+    console.log("Server Starting running on http://localhost:"+config.webPort);
 })

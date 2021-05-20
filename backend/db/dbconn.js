@@ -1,11 +1,8 @@
 var mongoose = require('mongoose');
-
+const config = require('../config/config');
 module.exports.connect = function(){
-    var p=process.env.MONGO_PASSWORD;
-    //console.log("in dbconn");
-    var s="mongodb+srv://aDm1n:"+p+"@cluster0.lwfsx.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
     var dbops = {useUnifiedTopology: true,useNewUrlParser: true}
-    mongoose.connect(s,dbops);
+    mongoose.connect(config.ConnectString,dbops);
     var db = mongoose.connection;
     db.on('connected', function() {
     console.log("Successfully connected to MongoDB!");
