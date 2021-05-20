@@ -44,6 +44,9 @@ app.get("/todo", function(req, res){
 app.get("/todos", function(req, res){
     res.sendFile(__dirname+"/frontend/html/todos.html");
 })
+app.get("/tambola", function(req, res){
+    res.sendFile(__dirname+"/frontend/html/tambola.html");
+})
 app.get("/crudbas", function(req, res){
     res.sendFile(__dirname+"/frontend/html/crud.html");
 })
