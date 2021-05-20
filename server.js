@@ -4,10 +4,13 @@ const app = express();
 const db= require("./backend/db/dbconn");
 const lib = require("./backend/libs/lib");
 const model = require("./backend/models/model");
+const courselib=require('./backend/libs/courselib');
+//const dbconnect = require('./backend/db/dbconnect');
 app.use(express.static(__dirname+"/frontend"));
 app.use(express.json());
 app.use(bp.urlencoded({extended:true}));
 db.connect();
+//dbconnect.connect();
 app.get("/", function(req, res){
     res.send("Basic site");
 })
@@ -41,7 +44,7 @@ app.get("/todo", function(req, res){
 app.get("/todos", function(req, res){
     res.sendFile(__dirname+"/frontend/html/todos.html");
 })
-app.get("/crud", function(req, res){
+app.get("/crudbas", function(req, res){
     res.sendFile(__dirname+"/frontend/html/crud.html");
 })
 app.get('/api/course', function(req,res){
@@ -62,6 +65,14 @@ app.get("/cruddelete", function(req, res){
 app.post('/api/delete',function(req,res){
     lib.delete(req,res);
 })
+app.get("/crudoper",function(req,res){
+    let filepathname9=__dirname+"/frontend/html/crud2.html";
+    res.sendFile(filepathname9);
+})
+app.get("/crud", courselib.getall);
+app.delete("/crud/:idd", courselib.deleteone);
+app.post("/crud",courselib.addnewone);
+app.put("/crud/:idd", courselib.update);
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, function(){
     console.log("Server Starting running on http://localhost:"+PORT);
